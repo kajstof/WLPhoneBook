@@ -12,17 +12,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WLPhoneBook.Library;
 
-namespace WLPhoneBook
+namespace WLPhoneBook.WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        private PhoneBook PhoneBookInstance;
+
         public MainWindow()
         {
             InitializeComponent();
+            PhoneBookInstance = new PhoneBook();
+            PhoneBookRecordsListView.ItemsSource = PhoneBookInstance.Records;
+            SearchTextBox.Focus();
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            PhoneBookRecordsListView.ItemsSource = PhoneBookInstance.SearchRecords(((TextBox)sender).Text.ToString());
         }
     }
 }

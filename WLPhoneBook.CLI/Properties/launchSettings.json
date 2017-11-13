@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WLPhoneBook.CLI": {
+      "commandName": "Project",
+      "commandLineArgs": "\"Krysi\""
+    }
+  }
+}
